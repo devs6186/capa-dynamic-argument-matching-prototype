@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/capa_dynamic_argument_matching/__init__.py
+src/capa_dynamic_argument_matching/extractors.py
+src/capa_dynamic_argument_matching/features.py
+src/capa_dynamic_argument_matching/matcher.py
+src/capa_dynamic_argument_matching/normalization.py
+src/capa_dynamic_argument_matching_prototype.egg-info/PKG-INFO
+src/capa_dynamic_argument_matching_prototype.egg-info/SOURCES.txt
+src/capa_dynamic_argument_matching_prototype.egg-info/dependency_links.txt
+src/capa_dynamic_argument_matching_prototype.egg-info/requires.txt
+src/capa_dynamic_argument_matching_prototype.egg-info/top_level.txt
+tests/test_features.py
+tests/test_matching_demo.py
+tests/test_normalization.py
+tests/test_parser.py

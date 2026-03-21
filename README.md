@@ -1,0 +1,71 @@
+# Structured Call Argument Matching Prototype
+
+This repository is a standalone MVP for **structured dynamic call argument matching** inspired by `dynamic_analysis_idea.md`.
+
+## Problem
+
+Traditional dynamic call matching often emits only flat `string` and `number` features. That loses argument names and return semantics, which causes broad matches and false positives.
+
+## Solution
+
+This MVP introduces additive call-scoped features:
+
+- `arg[name].string`
+- `arg[name].number`
+- `return-value`
+
+It also includes a normalization layer to map backend-specific argument names (for CAPE/DRAKVUF-style traces) to canonical MSDN-like names.
+
+## What is implemented
+
+- Feature classes: `Argument`, `ReturnValue`
+- Rule parser support:
+  - `arg[...].string`
+  - `arg[...].number`
+  - `return-value`
+  - `count(...)` over `api`, `arg[...]`, and `return-value`
+- Old vs new extraction paths for call features
+- Demo showing precision gain
+- Unit + integration tests
+
+## Demo
+
+```bash
+python demo.py
+```
+
+Expected output:
+
+```text
+Before (generic string rule):
+  false-positive call matched: True
+  true-positive call matched : True
+
+After (structured argument + return rule):
+  false-positive call matched: False
+  true-positive call matched : True
+```
+
+## Example rule
+
+See: `rules/createfile_temp.yml`
+
+## Quick start
+
+```bash
+pip install -e .[dev]
+pytest -q
+python demo.py
+```
+
+## Relationship to capa issues
+
+Conceptually addresses the same feature gap discussed in:
+
+- #2627 (argument-specific matching)
+- #2245 (argument identity)
+- #2246 (return-value matching)
+- #1688 (normalization across backends)
+- #1907 (counting repeated call features)
+
+This is an MVP prototype, not a full drop-in replacement for capa internals.

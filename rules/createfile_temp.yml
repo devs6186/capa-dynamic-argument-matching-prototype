@@ -1,0 +1,11 @@
+rule:
+  meta:
+    name: create temp file with success status
+    scopes:
+      dynamic:
+        - call
+  features:
+    - and:
+      - api: CreateFileW
+      - arg[lpFileName].string: C:\Temp\evil.dll
+      - return-value: 0
